@@ -24,8 +24,8 @@ const DEFAULT_BREAK_MINUTES = 5;
 const DEFAULT_BACKGROUND =
   "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1400&q=80";
 const PRESETS: BgmTrack[] = [
-  { label: "Lo-Fi Girl", id: "jfKfPfyJRdk", favorite: true, source: "preset" },
-  { label: "Chillhop Radio", id: "5yx6BWlEVcY", favorite: false, source: "preset" },
+  { label: "勉強用BGM", id: "vr9dLvJs7VE", favorite: true, source: "preset" },
+  { label: "10℃", id: "h6VdSjyUbbo", favorite: true, source: "preset" },
 ];
 
 type Mode = "focus" | "break";
