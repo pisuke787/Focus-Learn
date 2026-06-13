@@ -1,6 +1,6 @@
 {
   "name": "Focus Learn",
-  "short_name": "Focus",
+  "short_name": "Focus Learn",
   "description": "受験生のためのLo-Fiポモドーロ集中アプリ",
   "start_url": ".",
   "display": "standalone",
