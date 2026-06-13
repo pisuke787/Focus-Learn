@@ -4,3 +4,4 @@ dist/
 dev-server*.log
 vite.config.js
 vite.config.d.ts
+generate_pwa_assets.py
