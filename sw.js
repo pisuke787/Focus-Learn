@@ -1,5 +1,5 @@
 const CACHE_NAME = "focus-learn-v3";
-const ASSETS = ["/", "/index.html", "/manifest.json", "/icons/icon.svg"];
+const ASSETS = ["./", "./index.html", "./manifest.json", "./icons/icon-192.png", "./icons/icon-512.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)));
@@ -29,6 +29,6 @@ self.addEventListener("fetch", (event) => {
         caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
         return response;
       })
-      .catch(() => caches.match(event.request).then((cached) => cached || caches.match("/index.html")))
+      .catch(() => caches.match(event.request).then((cached) => cached || caches.match("index.html")))
   );
 });
