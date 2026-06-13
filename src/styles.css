@@ -1,0 +1,276 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: #0f172a;
+}
+
+.app-shell {
+  position: relative;
+  overflow-x: hidden;
+  background:
+    linear-gradient(180deg, rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.62)),
+    var(--focus-bg);
+  background-position: center;
+  background-size: cover;
+}
+
+.app-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(16, 185, 129, 0.08), transparent 24rem),
+    radial-gradient(circle at 78% 4%, rgba(251, 191, 36, 0.08), transparent 20rem);
+}
+
+.grid-cols-14 {
+  grid-template-columns: repeat(14, minmax(0, 1fr));
+}
+
+.glass-panel,
+.timer-glass {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.52);
+  box-shadow: 0 24px 70px rgba(2, 6, 23, 0.34);
+  backdrop-filter: blur(10px) saturate(1.1);
+}
+
+.timer-glass {
+  background: rgba(15, 23, 42, 0.08);
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow: 0 24px 70px rgba(2, 6, 23, 0.16);
+  backdrop-filter: blur(4px) saturate(1.05);
+}
+
+.settings-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.settings-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.58);
+  backdrop-filter: blur(10px);
+}
+
+.settings-card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 430px);
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.72);
+  box-shadow: 0 28px 100px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(20px) saturate(1.2);
+}
+
+.focus-stage {
+  position: relative;
+  min-height: 470px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  padding: 14px;
+  background:
+    linear-gradient(180deg, rgba(2, 6, 23, 0.04), rgba(2, 6, 23, 0.24)),
+    var(--focus-bg);
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 28px 100px rgba(0, 0, 0, 0.28);
+}
+
+.blur-disabled .glass-panel,
+.blur-disabled .timer-glass,
+.blur-disabled .settings-card,
+.blur-disabled .settings-backdrop {
+  backdrop-filter: none !important;
+}
+
+.stage-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(2, 6, 23, 0.22), rgba(2, 6, 23, 0.04) 45%, rgba(2, 6, 23, 0.22)),
+    linear-gradient(180deg, transparent, rgba(2, 6, 23, 0.22));
+}
+
+.focus-character {
+  position: absolute;
+  right: clamp(18px, 6vw, 70px);
+  bottom: 18px;
+  z-index: 2;
+  width: 170px;
+  height: 140px;
+  opacity: 0.86;
+  filter: drop-shadow(0 20px 24px rgba(0, 0, 0, 0.32));
+}
+
+.character-lamp {
+  position: absolute;
+  left: 92px;
+  top: 4px;
+  width: 34px;
+  height: 22px;
+  background: #fbbf24;
+  clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%);
+}
+
+.character-lamp::after {
+  content: "";
+  position: absolute;
+  left: -70px;
+  top: 18px;
+  width: 170px;
+  height: 120px;
+  opacity: 0;
+  background: radial-gradient(circle at top, rgba(254, 240, 138, 0.36), transparent 68%);
+  transition: opacity 220ms ease;
+}
+
+.character-writing .character-lamp::after {
+  opacity: 1;
+}
+
+.character-desk {
+  position: absolute;
+  left: 4px;
+  bottom: 24px;
+  width: 150px;
+  height: 18px;
+  background: #8b5e3c;
+  box-shadow: 0 18px 0 #3b2f2f;
+}
+
+.character-body {
+  position: absolute;
+  left: 44px;
+  bottom: 42px;
+  width: 78px;
+  height: 86px;
+  transform-origin: center bottom;
+  transition: transform 240ms ease;
+}
+
+.character-head {
+  position: absolute;
+  left: 26px;
+  top: 0;
+  width: 28px;
+  height: 28px;
+  background: #f6c99f;
+  box-shadow: inset 0 8px 0 #172033;
+}
+
+.character-torso {
+  position: absolute;
+  left: 18px;
+  top: 30px;
+  width: 42px;
+  height: 42px;
+  background: #34d399;
+}
+
+.character-arm {
+  position: absolute;
+  left: 42px;
+  top: 44px;
+  width: 38px;
+  height: 9px;
+  background: #f6c99f;
+  transform-origin: left center;
+}
+
+.character-pen {
+  position: absolute;
+  left: 72px;
+  top: 49px;
+  width: 20px;
+  height: 4px;
+  background: #f8fafc;
+  transform: rotate(24deg);
+}
+
+.character-writing .character-arm,
+.character-writing .character-pen {
+  animation: write 620ms steps(2, end) infinite;
+}
+
+.character-resting .character-body {
+  transform: rotate(8deg) translateY(4px);
+}
+
+.character-z {
+  position: absolute;
+  left: 60px;
+  top: -12px;
+  color: #bfdbfe;
+  font-size: 12px;
+  font-weight: 800;
+  opacity: 0;
+}
+
+.character-resting .character-z {
+  animation: float-z 1.4s ease-in-out infinite;
+}
+
+@keyframes write {
+
+  0%,
+  100% {
+    transform: rotate(-8deg);
+  }
+
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes float-z {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 720px) {
+  .focus-stage {
+    min-height: auto;
+    padding: 12px;
+  }
+
+  .focus-character {
+    right: 8px;
+    bottom: 6px;
+    transform: scale(0.72);
+    transform-origin: right bottom;
+  }
+
+  .timer-glass {
+    background: rgba(15, 23, 42, 0.1);
+  }
+}
